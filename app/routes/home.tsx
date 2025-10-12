@@ -8,7 +8,7 @@ import { useEffect , useState } from "react";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "AI Resume Analyzer" },
+    { title: "Jobalytic Resume Analyzer" },
     { name: "description", content: "Its a smart Feedback for your resume" },
   ];
 }
@@ -35,6 +35,7 @@ useEffect(() => {
     setResumes(parsedResumes||[]);
     setLoadingResumes(false);
   }
+  loadResumes();
 },[kv]);
 
   return <main className="bg-[url('/images/bg-main.svg')] bg-cover"> 
@@ -45,13 +46,12 @@ useEffect(() => {
 
         {!loadingResumes && resumes.length === 0 ? (
         <div className="flex flex-col items-center justify-center h-full">
-        <h2>No resumes found. Upload your first resume to get feedback.</h2>
+        <h2>No resumes found. Please upload your first resume to get AI powered feedback.</h2>
         </div>
         ) : (
         <h2> Review Your Submission and check AI powered feedback.</h2>
         )}
 
-        <h2> Review Your Submission & Track Your Progress using AI!</h2>
       </div>
       {loadingResumes && (
         <div className="flex flex-col items-center justify-center">
